@@ -10,17 +10,17 @@
 
 Este proyecto utiliza el aprendizaje automático para predecir el riesgo de impago de un préstamo bancario, ayudando así a los bancos a optimizar su proceso de toma de decisiones.
 
-src/          # archivo de funciones utiles para la EDA
-data/         # datos brutos, y  preprocesados (pasados al .gitignore)
-models/       # por de momento esta vacia esta carpeta
-reports/      # mi conclusion general a la pregunta de la practica
-env/          # librerias y dependencias del entorno (requirements.txt)
-notebooks/    # cuadernos de jupyter ordenados
-docs/         # vacia
-html/         # cuadernos jupyter guardados formato html
-images/       # (02_notebook_images) imagenes de graficos de mi EDA
+- src/          # archivo de funciones utiles para la EDA
+- data/         # datos brutos, y  preprocesados (pasados al .gitignore)
+- models/       # por de momento esta vacia esta carpeta
+- reports/      # mi conclusion general a la pregunta de la practica
+- env/          # librerias y dependencias del entorno (requirements.txt)
+- notebooks/    # cuadernos de jupyter ordenados
+- docs/         # vacia
+- html/         # cuadernos jupyter guardados formato html
+- images/       # (02_notebook_images) imagenes de graficos de mi EDA
 
-README.md        # este archivo
+- README.md        # este archivo
 
 
 
