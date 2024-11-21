@@ -1,23 +1,27 @@
 #PYTHON FILE WITH ALL MY FUNCTIONS USEFUL FOR EDA 
 
-# PYTHON FILE WITH ALL MY FUNCTIONS USEFUL FOR EDA
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import zscore
 import os
-import scipy.stats as ss  # For Cramér's V
-
+import scipy.stats as ss 
 import time
 import gc
 import psutil
 
-# 1. HANDLING MISSING VALUES
+#este archivo no sigue las normativas de explicaciones de funciones y ha sido realizado en inglés/francés/espanol,
+#no sabiendo las reglas lo déjé asi, tratando explicar en castellano en mis notebooks lo que hacen mis funciones de manera clara: 
+
+
+
+
+
+# HANDLING MISSING VALUES
 
 def check_missing_values(df):
-    # Displays the percentage of missing values for each column
+    #Displays the percentage of missing values for each column
     missing = df.isnull().mean() * 100
     missing = missing[missing > 0]
     print("% of NAN per column:\n", missing)
@@ -56,7 +60,26 @@ def fill_missing_with_mean(df):
     print("Missing values replaced with the mean.")
     return df
 
-# 2. DATA SUMMARY & DESCRIPTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# DATA SUMMARY & DESCRIPTION
 
 def check_duplicate_columns(df):
     duplicate_columns = {}
@@ -85,7 +108,28 @@ def unique_values_per_category(df):
     print("Number of unique values per categorical column:\n", unique_counts)
     return unique_counts
 
-# 3. OUTLIER DETECTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# OUTLIER DETECTION
 
 def detect_outliers_zscore(df, threshold=3):
     # Detects outliers in numerical columns using the Z-score method
@@ -104,25 +148,11 @@ def plot_boxplots(df):
 
 
 
-#4A/ VARIABLES CONTINUAS Y CATEGORICAS 
+#VARIABLES CONTINUAS Y CATEGORICAS 
 
-# 5. CATEGORICAL AND NUMERICAL HANDLING
-import numpy as np
+#CATEGORICAL AND NUMERICAL HANDLING
 
 def dame_variables_categoricas(dataset=None):
-    '''
-    ----------------------------------------------------------------------------------------------------------
-    Función dame_variables_categoricas:
-    ----------------------------------------------------------------------------------------------------------
-        -Descripción: Función que recibe un dataset y devuelve una lista con los nombres de las 
-        variables categóricas
-        -Inputs: 
-            -- dataset: Pandas dataframe que contiene los datos
-        -Return:
-            -- categorical_vars: lista con los nombres de las variables categóricas
-            -- continuous_vars: lista con las variables numéricas
-            -- 1: si la ejecución es incorrecta
-    '''
     if dataset is None:
         print(u'\nFaltan argumentos por pasar a la función')
         return 1
@@ -178,24 +208,15 @@ def check_binary_like_columns(df, numeric_columns):
 
 
 
-# 4. VISUALIZATION FUNCTIONS
+# VISUALIZATION FUNCTIONS
 
 
 
 #CATEGORICAS 
 
 
-
-import os
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-
 def analyze_variable_characteristics(df, col_name):
-    """
-    Analyse les caractéristiques d'une variable pour déterminer le meilleur type de visualisation
-    """
+    
     n_unique = df[col_name].nunique()
     n_total = len(df)
     
@@ -216,20 +237,7 @@ def analyze_variable_characteristics(df, col_name):
 
 
 def plot_smart_visualization(df, col_name, target, figsize=(15, 6)):
-    """
-    Crée des visualisations adaptées automatiquement selon les caractéristiques des données
-    
-    Parameters:
-    -----------
-    df : DataFrame
-        Le DataFrame contenant les données
-    col_name : str
-        Nom de la colonne à analyser
-    target : str
-        Nom de la variable cible
-    figsize : tuple
-        Taille de la figure (largeur, hauteur)
-    """
+
     plt.style.use('seaborn')
     characteristics = analyze_variable_characteristics(df, col_name)
     
@@ -318,18 +326,7 @@ def plot_smart_visualization(df, col_name, target, figsize=(15, 6)):
 
 
 def plot_all_variables(df, variables, target):
-    """
-    Visualise toutes les variables du DataFrame avec la visualisation appropriée
     
-    Parameters:
-    -----------
-    df : DataFrame
-        Le DataFrame contenant les données
-    variables : list
-        Liste des variables à analyser
-    target : str
-        Nom de la variable cible
-    """
     for var in variables:
         print(f"\nAnalyzing {var}")
         try:
@@ -343,8 +340,11 @@ def plot_all_variables(df, variables, target):
 
 
 #CONTINUAS 
+
+
+
+
 def set_plot_style():
-    """Configura el estilo general de los gráficos"""
     sns.set_style("whitegrid")
     plt.rcParams['figure.dpi'] = 100
     plt.rcParams['font.size'] = 10
@@ -355,22 +355,18 @@ def set_plot_style():
 
 
 def clear_memory():
-    """Limpia la memoria"""
     plt.close('all')
     gc.collect()
 
 
 def optimize_figure_size(n_categories, label_length):
-    """Optimiza el tamaño de la figura"""
     if n_categories > 10 or label_length > 15:
         return (15, 6)
     return (12, 5)
 
 
 def plot_feature(df, col_name, isContinuous, target, max_categories=15, sample_size=50000):
-    """
-    Función para crear gráficos optimizados con seaborn
-    """
+    
     # Muestreo si el dataset es grande
     if len(df) > sample_size:
         df = df.sample(n=sample_size, random_state=42)
@@ -465,9 +461,7 @@ def plot_feature(df, col_name, isContinuous, target, max_categories=15, sample_s
 
 
 def plot_all_features(df, continuous_vars, target_col='TARGET', batch_size=3, memory_threshold=85):
-    """
-    Función principal para generar todos los gráficos
-    """
+    
     # Configurar estilo
     set_plot_style()
     
@@ -523,7 +517,31 @@ def plot_all_features(df, continuous_vars, target_col='TARGET', batch_size=3, me
 
 
 
-# 6. NORMALIZATION & SCALING
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#NORMALIZATION & SCALING
 
 def normalize_minmax(df):
     # Normalizes numerical columns to the range [0, 1] using Min-Max scaling
@@ -550,12 +568,7 @@ def cramers_v(confusion_matrix):
 
 
 def get_deviation_of_mean_perc(pd_loan, list_var_continuous, target, multiplier):
-    """
-    Devuelve el porcentaje de valores que exceden del intervalo de confianza
-    :type series:
-    :param multiplier:
-    :return:
-    """
+    
     pd_final = pd.DataFrame()
     
     for i in list_var_continuous:
