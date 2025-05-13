@@ -5,7 +5,6 @@
 
 
 * Nina Odoux
-* e-mail:  nina.odoux@cunef.edu
 * GITHUB REPOSITORY FOR THIS TASK :  https://github.com/ninaodoux/ML_practica1EDA
 
 ### Proyecto
